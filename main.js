@@ -3,7 +3,7 @@ let clickFlag = false;
 let rectSize = 20;
 
 
-class piece { //class that repersents a puzzle piece, since we cant store objects on a canvas, we will store the bounding box of the piece, and include a function to check if a point is inside the bounding box
+class piece { 
     constructor(x, y, width, height) {
         this.x = x;
         this.y = y;
@@ -55,7 +55,6 @@ window.onload = function () {
         console.log("bounds:" + pieces[0].getBounds());
     }); 
 
-    //create a piece
     let ctx = canvasElem.getContext("2d");
     pieces.push(new piece(100, 100, rectSize, rectSize));
     pieces.push(new piece(200, 200, rectSize, rectSize));
@@ -67,28 +66,22 @@ window.onload = function () {
     });
 
     canvasElem.addEventListener("mousedown", function (e) {
-        //console.log(getMousePosition(canvasElem, e));
         clickFlag = true;
     });
     canvasElem.addEventListener("mouseup", function (e) {
-        //console.log(getMousePosition(canvasElem, e));
         clickFlag = false;
     });
     canvasElem.addEventListener("mousemove", function (e) {
         if (clickFlag) {
-            //console.log(getMousePosition(canvasElem, e));
             ctx = canvasElem.getContext("2d");
 
-            //first we check if the click is inside the piece
             for (let i = 0; i < pieces.length; i++) {
                 if (pieces[i].isInside(getMousePosition(canvasElem, e)[0], getMousePosition(canvasElem, e)[1])) {
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-                    //if it is, we move the piece to the new position
                     pieces[i].x = getMousePosition(canvasElem, e)[0] - rectSize/2;
                     pieces[i].y = getMousePosition(canvasElem, e)[1] - rectSize/2;
                     pieces[i].draw(ctx);
-                    //console.log(pieces[i].getPosition());
 
                     pieces.forEach(function (piece) {    
                         piece.draw(ctx);
@@ -97,8 +90,6 @@ window.onload = function () {
                 }
             }
 
-            //ctx.clearRect(0, 0, canvas.width, canvas.height);
-            //ctx.fillRect(getMousePosition(canvasElem, e)[0] - rectSize/2, getMousePosition(canvasElem, e)[1] - rectSize/2, rectSize, rectSize );
         }
     });
 }

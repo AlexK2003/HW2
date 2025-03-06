@@ -88,7 +88,7 @@ window.onload = function () {
                     pieces[i].x = getMousePosition(canvasElem, e)[0] - rectSize/2;
                     pieces[i].y = getMousePosition(canvasElem, e)[1] - rectSize/2;
                     pieces[i].draw(ctx);
-                    console.log(pieces[i].getPosition());
+                    //console.log(pieces[i].getPosition());
 
                     pieces.forEach(function (piece) {    
                         piece.draw(ctx);

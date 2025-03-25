@@ -1,10 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <script src="./main.js"></script>
+        <script src="./countdown.js"></script>
+        <link rel="stylesheet" href="./countdown.css">
     </head>
 
     <body>
-        
+        <div id="maindiv">
+            <h1>Countdown</h1>
+            <br>
+            <div style="display: inline-flex;" id="countdowndiv">
+                <div id="selectorDiv">
+                    <input type="radio" name="unit" id="Hour" value="hour">
+                    <label for="Hour">Hour</label>
+                    <input type="radio" name="unit" id="Minute" value="minute">
+                    <label for="Minute">Minute</label>
+                    <input type="radio" name="unit" id="Second" value="second" checked>
+                    <label for="Second">Second</label>
+                </div>
+                <input type="number" id="countdownvalue" value="10">
+            </div>
+            <br>
+            <h1 id="countdown">00:00:00</h1>
+            <br>
+            <button onclick="startCountdown()" id="startButton">Start Countdown</button>
+        </div>
     </body>
 </html>
